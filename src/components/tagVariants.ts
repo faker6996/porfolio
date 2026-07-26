@@ -2,6 +2,16 @@ export type TagVariant =
   | "three"
   | "websockets"
   | "react"
+  | "typescript"
+  | "tailwind"
+  | "vscode"
+  | "rust"
+  | "tauri"
+  | "dotnet"
+  | "signalr"
+  | "rabbitmq"
+  | "blazor"
+  | "ffmpeg"
   | "redis"
   | "gray"
   | "html"
@@ -18,6 +28,16 @@ export const tagLabels = {
   three: "Three.js",
   websockets: "WebSockets",
   react: "React",
+  typescript: "TypeScript",
+  tailwind: "Tailwind CSS",
+  vscode: "VS Code",
+  rust: "Rust",
+  tauri: "Tauri",
+  dotnet: ".NET",
+  signalr: "SignalR",
+  rabbitmq: "RabbitMQ",
+  blazor: "Blazor",
+  ffmpeg: "FFmpeg",
   redis: "Redis",
   gray: "Gray",
   html: "HTML",

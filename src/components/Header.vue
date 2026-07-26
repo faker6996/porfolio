@@ -100,7 +100,7 @@ const getInTouchClassNames = computed(() => {
         renderAs="a"
         variant="accent"
         :aria-label="t('get-in-touch')"
-        :href="social.find((item) => item.name === 'mail')?.url ?? ''"
+        :href="social.find((item) => item.name === 'github')?.url ?? ''"
         external
         :class="getInTouchClassNames"
         data-cursor="circle-white"

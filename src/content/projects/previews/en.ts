@@ -1,47 +1,37 @@
-import thumbnailCubeWar from "../../../assets/thumbnails/cubewar.webp";
-import thumbnailQuibbo from "../../../assets/thumbnails/quibbo.webp";
-//import thumbnailParticles from "../../../assets/thumbnails/particles.webp";
-import thumbnailPokedex from "../../../assets/thumbnails/pokedex.webp";
-import thumbnailSharkie from "../../../assets/thumbnails/sharkie.webp";
-import thumbnailStreakon from "../../../assets/thumbnails/streakon.webp";
-
 import type { ProjectPreview } from "../../types";
+
+const githubPreview = (repository: string) =>
+  `https://opengraph.githubassets.com/portfolio-tran-van-bach/faker6996/${repository}`;
 
 export default [
   {
-    title: "StreakOn",
-    slug: "streakon",
-    thumbnail: thumbnailStreakon,
-    description: "Social habit tracking app",
+    title: "Underverse UI",
+    slug: "underverse",
+    thumbnail: githubPreview("underverse"),
+    description: "A library of 60+ React components",
   },
   {
-    title: "CubeWar",
-    slug: "cubewar",
-    thumbnail: thumbnailCubeWar,
-    description: "Multiplayer strategy game",
+    title: "MD & PDF Toolkit",
+    slug: "md-extension",
+    thumbnail: githubPreview("md_extension"),
+    description: "An all-in-one Markdown toolkit for VS Code",
   },
   {
-    title: "Quibbo",
-    slug: "quibbo",
-    thumbnail: thumbnailQuibbo,
-    description: "Multiplayer gaming platform",
+    title: "Ziply",
+    slug: "ziply",
+    thumbnail: githubPreview("ziply"),
+    description: "A cross-platform archive utility",
   },
   {
-    title: "Sharkie",
-    slug: "sharkie",
-    thumbnail: thumbnailSharkie,
-    description: "2D adventure game",
+    title: "Social Platform",
+    slug: "facebook",
+    thumbnail: githubPreview("facebook"),
+    description: "A full-stack real-time social platform",
   },
-  /**  {
-    title: "WebGL Particles",
-    slug: "particles",
-    thumbnail: thumbnailParticles,
-    description: "Dynamic 3D particles",
-  }, */
   {
-    title: "Pokédex",
-    slug: "pokedex",
-    thumbnail: thumbnailPokedex,
-    description: "Open-source learning project",
+    title: "Stream & Detection",
+    slug: "stream-detection",
+    thumbnail: githubPreview("stream-and-detection"),
+    description: "Multi-camera surveillance with AI overlays",
   },
 ] as const satisfies ProjectPreview[];
