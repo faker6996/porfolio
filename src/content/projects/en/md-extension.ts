@@ -17,6 +17,18 @@ export default {
       },
     },
     {
+      type: "architecture",
+      props: {
+        title: "One source, multiple document outputs",
+        nodes: [
+          { label: "Markdown", detail: "Text, diagrams, math, code, and local assets" },
+          { label: "Render engine", detail: "Preview pipeline with custom styling" },
+          { label: "Converters", detail: "Format-specific PDF, DOCX, and image output" },
+          { label: "VS Code", detail: "Commands, shortcuts, preview, and viewer" },
+        ],
+      },
+    },
+    {
       type: "list",
       props: {
         title: "Core capabilities",

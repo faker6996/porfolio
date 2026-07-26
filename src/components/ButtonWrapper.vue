@@ -25,8 +25,8 @@ const classes = computed(() => [
 <style scoped lang="scss">
 .button-wrapper {
   border: none;
-  border-radius: 100px;
-  letter-spacing: 0.02em;
+  border-radius: 999px;
+  letter-spacing: 0.08em;
   font-size: var(--font-size-md);
   font-weight: 800;
   text-align: center;
@@ -34,9 +34,14 @@ const classes = computed(() => [
   text-transform: uppercase;
   background-color: transparent;
   transition:
-    background-color 0.1s ease-in-out,
-    color 0.1s ease-in-out,
-    border-color 0.1s ease-in-out;
+    background-color 0.22s ease-in-out,
+    color 0.22s ease-in-out,
+    border-color 0.22s ease-in-out,
+    transform 0.22s ease-in-out;
+
+  &:active {
+    transform: translateY(1px) scale(0.985);
+  }
 
   &-rounded {
     border-radius: 50%;

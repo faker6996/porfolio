@@ -43,6 +43,10 @@ onMounted(loadPreviews);
   <Layout class="project-content">
     <ProjectHero :content="content" :projectId="projectId" />
     <div class="project-content-components">
+      <div class="project-content-components-rail system-label">
+        <span>TECHNICAL CASE STUDY</span>
+        <span>DECISIONS / SYSTEM / OUTPUT</span>
+      </div>
       <div
         v-for="(component, index) in content.components"
         :key="`${component.type}-${index}`"
@@ -95,24 +99,41 @@ onMounted(loadPreviews);
 
     &-grid {
       padding: 0 var(--space-outer);
-      padding-top: var(--space-xl);
-      padding-bottom: var(--space-xxxl);
+      padding-top: clamp(80px, 10vw, 160px);
+      padding-bottom: clamp(80px, 10vw, 160px);
     }
   }
 
   &-components {
-    padding: 20px var(--space-outer);
+    position: relative;
+    padding: clamp(72px, 10vw, 150px) var(--space-outer);
     background-color: var(--color-background-400);
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: var(--radius-xxl);
-    gap: var(--space-xxl);
+    border-radius: 0;
+    gap: clamp(72px, 10vw, 150px);
+    background-image: linear-gradient(rgba(240, 234, 223, 0.04) 1px, transparent 1px);
+    background-size: 100% 96px;
 
     @include mixins.mq("md") {
-      padding: 64px var(--space-outer);
+      padding-left: var(--space-outer);
+      padding-right: var(--space-outer);
+    }
+
+    &-rail {
+      width: min(100%, var(--breakpoint-xxxl));
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid rgba(240, 234, 223, 0.18);
+      color: var(--color-text-300);
+
+      span:first-child {
+        color: var(--color-accent-400);
+      }
     }
   }
 }

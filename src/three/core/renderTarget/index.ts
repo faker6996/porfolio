@@ -20,7 +20,7 @@ const init = () => {
 const render = () => {
   const rendererInstance = renderer.getInstance();
   rendererInstance.setRenderTarget(instance);
-  rendererInstance.setClearColor("#0169b4");
+  rendererInstance.setClearColor("#341713");
   rendererInstance.render(scene, mainCamera.instance);
   rendererInstance.setRenderTarget(null);
 };

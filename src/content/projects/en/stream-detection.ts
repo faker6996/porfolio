@@ -16,6 +16,18 @@ export default {
       },
     },
     {
+      type: "architecture",
+      props: {
+        title: "From IP camera to browser-based AI overlay",
+        nodes: [
+          { label: "RTSP cameras", detail: "Multiple configurable IP camera sources" },
+          { label: "FFmpeg + HLS", detail: "Short browser-compatible streaming segments" },
+          { label: "Detection API", detail: "Representative frames return bounding boxes" },
+          { label: "Blazor + Canvas", detail: "SignalR coordinates rendered over live video" },
+        ],
+      },
+    },
+    {
       type: "list",
       props: {
         title: "Technical highlights",

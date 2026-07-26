@@ -133,7 +133,8 @@ watch(
 </script>
 
 <template>
-  <div
+  <main
+    id="main-content"
     :class="[
       'home-wrapper',
       typeof projectId === 'string' && isTransitioning && `home-wrapper-out`,
@@ -163,7 +164,7 @@ watch(
       </div>
       <Footer :withSocial="false"></Footer>
     </Layout>
-  </div>
+  </main>
   <HeaderHome v-if="projectsLoaded" />
 </template>
 

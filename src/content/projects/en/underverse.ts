@@ -17,6 +17,18 @@ export default {
       },
     },
     {
+      type: "architecture",
+      props: {
+        title: "A typed path from tokens to product interfaces",
+        nodes: [
+          { label: "Design tokens", detail: "Semantic color, spacing, and border modes" },
+          { label: "Core components", detail: "Accessible primitives with typed APIs" },
+          { label: "Complex systems", detail: "DataTable, timelines, and rich-text editing" },
+          { label: "Consumer apps", detail: "React products with shared configuration" },
+        ],
+      },
+    },
+    {
       type: "list",
       props: {
         title: "Highlights",

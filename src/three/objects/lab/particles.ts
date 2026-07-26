@@ -33,7 +33,7 @@ const init = () => {
   const noiseOffsets = new Float32Array(PARTICLE_COUNT * 3); // Noise offsets for organic movement
   const sizes = new Float32Array(PARTICLE_COUNT); // Individual size multiplier
 
-  const blueColor = new Color(0.1, 0.808, 1.0); // Blue (similar to lab-shine color)
+  const accentColor = new Color("#d85d49");
 
   const BOTTOM_RADIUS = 1.0;
 
@@ -72,9 +72,9 @@ const init = () => {
     // Individual size multiplier (0.6 to 1.4 for organic variation)
     sizes[i] = 0.6 + Math.random() * 0.8;
 
-    // Blue with varying intensities
+    // Lacquer red with varying intensities
     const intensity = 0.5 + Math.random() * 0.5; // 0.5 to 1.0 for intensity variation
-    const color = blueColor.clone().multiplyScalar(intensity);
+    const color = accentColor.clone().multiplyScalar(intensity);
 
     // Add slight hue variation for more organic feel
     const hueVariation = 0.05;

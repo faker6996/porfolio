@@ -27,7 +27,7 @@ const props = defineProps<{
   white-space: nowrap;
   text-transform: uppercase;
   z-index: 2;
-  border-radius: 100px;
+  border-radius: 999px;
   padding: var(--space-xxs) 0;
 
   &::after {
@@ -41,7 +41,7 @@ const props = defineProps<{
       background-color 0.1s ease-in-out,
       opacity 0.1s ease-in-out;
     background-color: var(--color-text-400);
-    border-radius: 100px;
+    border-radius: 999px;
     z-index: -1;
     opacity: 0;
   }

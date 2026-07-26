@@ -30,6 +30,7 @@ const { isTouch } = useAgent();
 </script>
 
 <template>
+  <a href="#main-content" class="skip-link">Skip to content</a>
   <Header />
 
   <!-- main page -->
@@ -55,6 +56,22 @@ const { isTouch } = useAgent();
 </template>
 
 <style lang="scss">
+.skip-link {
+  position: fixed;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  z-index: calc(var(--z-index-preloader) + 1);
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-white-400);
+  background: var(--color-accent-400);
+  transform: translateY(-160%);
+  transition: transform 180ms ease;
+
+  &:focus {
+    transform: translateY(0);
+  }
+}
+
 .home-wrapper-projectIsReady {
   visibility: hidden;
   position: fixed;

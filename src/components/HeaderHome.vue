@@ -124,15 +124,17 @@ onMounted(() => {
     position: relative;
     display: flex;
     padding: 3px;
-    background-color: var(--color-beige-500);
-    border-radius: 100px;
+    background-color: rgba(11, 14, 12, 0.72);
+    border: 1px solid rgba(240, 234, 223, 0.14);
+    border-radius: 999px;
     color: var(--color-text-400);
+    backdrop-filter: blur(12px);
     transition:
       color 0.1s ease-in-out,
       background-color 0.1s ease-in-out;
 
     &-dark {
-      background-color: var(--color-dark-blue-500);
+      background-color: rgba(11, 14, 12, 0.82);
       color: var(--color-white-400);
     }
   }
@@ -143,8 +145,8 @@ onMounted(() => {
     left: 3px;
     height: calc(100% - 6px);
     width: 128px;
-    background: var(--color-orange-400);
-    border-radius: 100px;
+    background: var(--color-accent-400);
+    border-radius: 999px;
     transition:
       transform 0.3s var(--ease-smooth),
       opacity 0.1s ease-in-out,
@@ -153,7 +155,7 @@ onMounted(() => {
     opacity: 0;
 
     &-dark {
-      background-color: var(--color-cyan-500);
+      background-color: var(--color-accent-400);
     }
 
     &-active {
@@ -173,6 +175,8 @@ onMounted(() => {
     width: 128px;
     white-space: nowrap;
     text-transform: uppercase;
+    font-family: "ProFontWindows", monospace;
+    letter-spacing: 0.08em;
 
     &-active {
       color: var(--color-white-400);

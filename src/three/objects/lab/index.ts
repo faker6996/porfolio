@@ -61,7 +61,7 @@ const init = () => {
     position: new Vector3(0, -0.23, 1.07),
     scale: 0.17,
     renderOrder: 22,
-    color: new Color("#bae9ff"),
+    color: new Color("#f1a08f"),
   });
   aboutNumbers.updateFrames(0);
 

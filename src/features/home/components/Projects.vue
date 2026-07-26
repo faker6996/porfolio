@@ -3,8 +3,6 @@ import { ref, watch, onMounted } from "vue";
 import { previews } from "../../../content/projects/previews";
 import { locale } from "../../../i18n/store";
 import PreviewCard from "../../projects/components/PreviewCard.vue";
-import NotchSection from "../../../components/NotchSection.vue";
-import Banner from "../../../components/Banner.vue";
 import { t } from "../../../i18n/utils/translate";
 import { isFeatureEnabled } from "../../../utils/features";
 
@@ -31,22 +29,28 @@ onMounted(loadPreviews);
 </script>
 
 <template>
-  <div class="projects">
-    <NotchSection class="projects-notch-start" />
-    <NotchSection class="projects-notch-end" />
-    <div class="grid">
+  <section class="projects">
+    <div class="grid projects-heading">
       <div class="projects-title">
-        <Banner class="projects-title-banner" :copy="t('selected')" size="sm" animated />
-        <h2 class="projects-title-copy">{{ t("projects") }}</h2>
+        <p class="projects-title-index system-label">02 / {{ t("selected") }}</p>
+        <h2 class="projects-title-copy">Selected<br />systems</h2>
+      </div>
+      <p class="projects-intro">
+        Five public projects across interface systems, developer tools, native software, real-time communication, and
+        computer vision.
+      </p>
+      <div class="projects-coordinate system-label">
+        <span>REPOSITORY INDEX</span>
+        <span>GITHUB / FAKER6996</span>
       </div>
     </div>
-    <div class="grid">
+    <div class="grid projects-list">
       <div class="projects-cards">
-        <PreviewCard v-for="preview in loadedPreviews" :key="preview.title" :preview="preview" />
+        <PreviewCard v-for="(preview, index) in loadedPreviews" :key="preview.title" :preview="preview" :index="index" />
         <PreviewCard v-if="isFeatureEnabled('startProject')" />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
@@ -54,106 +58,81 @@ onMounted(loadPreviews);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   position: relative;
   width: 100%;
-  gap: var(--space-xl);
+  gap: clamp(72px, 10vw, 160px);
   padding-left: var(--space-outer);
   padding-right: var(--space-outer);
-  background-color: var(--color-beige-400);
-  min-height: calc(var(--lvh) * 100 + var(--radius-xxl));
-  padding-top: 96px;
-  padding-bottom: 96px;
+  background:
+    linear-gradient(rgba(240, 234, 223, 0.035) 1px, transparent 1px),
+    var(--color-background-400);
+  background-size: 100% 96px;
+  padding-top: clamp(100px, 14vw, 220px);
+  padding-bottom: clamp(120px, 16vw, 260px);
 
-  @include mixins.mq("md") {
-    padding-top: 144px;
-    padding-bottom: 144px;
-    gap: var(--space-xxl);
-  }
-
-  @include mixins.mq("lg") {
-    gap: var(--space-xxxl);
+  &-heading {
+    align-items: end;
   }
 
   &-title {
     position: relative;
-    padding-top: var(--space-md);
     grid-column: 1 / 13;
 
     @include mixins.mq("md") {
-      grid-column: 1 / 10;
+      grid-column: 1 / 8;
     }
 
     @include mixins.mq("lg") {
-      grid-column: 3 / 8;
+      grid-column: 1 / 7;
+    }
+
+    &-index {
+      margin-bottom: var(--space-md);
+      color: var(--color-accent-400);
     }
 
     &-copy {
       font-weight: 900;
-      letter-spacing: 0.02em;
-      font-size: var(--font-size-title-md);
-
-      @include mixins.mq("sm") {
-        font-size: var(--font-size-title-lg);
-      }
-
-      @include mixins.mq("xl") {
-        font-size: var(--font-size-title-xl);
-      }
-    }
-
-    &-banner {
-      position: absolute;
-      top: 0;
-      left: -8px;
-      transform: translate(0, -20%) rotate(-4deg);
-
-      @include mixins.mq("lg") {
-        left: -16px;
-        transform: translate(0, -20%) rotate(-6deg);
-      }
+      letter-spacing: -0.065em;
+      line-height: 0.83;
+      font-size: clamp(4rem, 10vw, 9rem);
+      text-transform: uppercase;
     }
   }
 
-  &-notch {
-    &-start {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: translateY(-100%);
-      color: var(--color-beige-400);
-      --icon-color: var(--color-beige-400);
-    }
+  &-intro {
+    grid-column: 1 / 13;
+    max-width: 40ch;
+    color: var(--color-text-300);
+    font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+    line-height: 1.5;
 
-    &-end {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      color: var(--color-beige-600);
-      --icon-color: var(--color-beige-600);
+    @include mixins.mq("md") {
+      grid-column: 8 / 13;
     }
+  }
+
+  &-coordinate {
+    grid-column: 1 / 13;
+    display: flex;
+    justify-content: space-between;
+    padding-top: var(--space-md);
+    margin-top: var(--space-xxl);
+    border-top: 1px solid rgba(240, 234, 223, 0.18);
+    color: var(--color-text-300);
+  }
+
+  &-list {
+    overflow: visible;
   }
 
   &-cards {
     max-width: 100%;
     flex: 1;
     grid-column: 1 / span 12;
-    display: grid;
-    gap: var(--space-lg);
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-
-    @include mixins.mq("md") {
-      grid-column: 1 / span 12;
-    }
-
-    @include mixins.mq("lg") {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      grid-column: 3 / span 8;
-    }
-
-    @include mixins.mq("xl") {
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    }
+    display: flex;
+    flex-direction: column;
+    gap: clamp(64px, 11vw, 180px);
   }
 }
 </style>

@@ -10,7 +10,7 @@ uniform float uProgress;
 #define CELLS 18.0
 #define LINE_WIDTH 0.01
 #define FOG_START 0.25
-#define SHADOW_COLOR vec3(0.0, 0.0, 0.075)
+#define SHADOW_COLOR vec3(0.055, 0.01, 0.008)
 
 void main() {
     vec2 coord = vUv * CELLS;

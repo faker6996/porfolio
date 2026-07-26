@@ -28,7 +28,7 @@ const props = defineProps<{
     height: calc(100% + 8px);
     background-color: var(--color-hover, var(--color-black-400));
     z-index: -1;
-    border-radius: var(--radius-md);
+    border-radius: 999px;
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
   }

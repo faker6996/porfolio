@@ -3,6 +3,7 @@ import ArrowRight from "../../../components/icons/ArrowRight.vue";
 import { t } from "../../../i18n/utils/translate";
 
 import type { ProjectPreview } from "../../../content/types";
+import SystemVisual from "./SystemVisual.vue";
 
 const { project } = defineProps<{
   project: ProjectPreview;
@@ -11,7 +12,9 @@ const { project } = defineProps<{
 
 <template>
   <div class="next-project children-unclickable" data-hoversound="hover">
-    <img :src="project.thumbnail" :alt="project.title" class="next-project-image" />
+    <div class="next-project-image">
+      <SystemVisual :project="project.slug" compact />
+    </div>
     <div class="next-project-content">
       <p class="next-project-prefix">{{ t("next-project") }}:</p>
       <h3 class="next-project-title">{{ project.title }}</h3>
@@ -22,10 +25,10 @@ const { project } = defineProps<{
 
 <style scoped lang="scss">
 .next-project {
-  border: var(--stroke-md) solid var(--color-grayscale-400);
-  padding: var(--space-xxs);
-  padding-right: var(--space-sm);
-  border-radius: var(--radius-md);
+  border-top: 1px solid var(--color-grayscale-400);
+  border-bottom: 1px solid var(--color-grayscale-400);
+  padding: var(--space-sm) 0;
+  border-radius: 0;
   color: var(--color-text-400);
   --icon-color: var(--color-text-400);
   transition: background-color 0.1s ease-in-out;
@@ -34,16 +37,15 @@ const { project } = defineProps<{
   align-items: center;
   position: relative;
   justify-content: space-between;
-  height: 64px;
+  min-height: 120px;
 
   @include mixins.mq("sm") {
-    height: 80px;
+    min-height: 160px;
   }
 
   @include mixins.mq("md") {
-    padding: var(--space-xs);
-    padding-right: var(--space-md);
-    height: 120px;
+    padding: var(--space-md) 0;
+    min-height: 220px;
   }
 
   @include mixins.mq("lg") {
@@ -69,9 +71,10 @@ const { project } = defineProps<{
   }
 
   &-title {
-    font-size: var(--font-size-title-xxs);
+    font-size: clamp(1.8rem, 4vw, 4.4rem);
     line-height: var(--line-height-title);
-    font-weight: 700;
+    font-weight: 900;
+    letter-spacing: -0.055em;
     color: var(--color-text-400);
 
     @include mixins.mq("md") {
@@ -86,15 +89,21 @@ const { project } = defineProps<{
   }
 
   &-image {
-    border-radius: var(--radius-sm);
-    max-height: 100%;
-    width: auto;
+    align-self: stretch;
+    width: min(34%, 320px);
+    min-width: 110px;
+    overflow: hidden;
   }
 
   @include mixins.hover {
     &:hover {
-      background-color: var(--color-grayscale-400);
+      background-color: transparent;
+      border-color: var(--color-accent-400);
     }
   }
 }
 </style>
+    font-family: "ProFontWindows", monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: var(--font-size-xs);

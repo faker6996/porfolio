@@ -12,6 +12,7 @@ import headVertexShader from "../../shaders/avatar-head/vertex.glsl";
 import headFragmentShader from "../../shaders/avatar-head/fragment.glsl";
 import gsap from "gsap";
 import { aboutProgress } from "../../../animations/transitions/about";
+import { avatarHair } from "./hair";
 //import { avatarHologram } from "./hologram";
 
 import type { Material, Bone, Texture } from "three";
@@ -121,6 +122,7 @@ const setupMesh = () => {
   }
 
   mesh.rotation.z = 0;
+  avatarHair.init(mesh, uniforms);
 
   transform.add(mesh);
 
@@ -162,6 +164,7 @@ const destroy = () => {
   //mesh = null;
   //transform.clear();
   face.destroy();
+  avatarHair.destroy();
   gsap.ticker.remove(tick);
 };
 

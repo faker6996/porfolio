@@ -49,6 +49,14 @@ watchEffect((onInvalidate) => {
 
 <template>
   <div class="about-content">
+    <div class="about-system-label system-label">
+      <span>CAPABILITY MAP / ACTIVE</span>
+      <span>SCROLL TO INSPECT</span>
+    </div>
+    <div class="about-axis" aria-hidden="true">
+      <span></span>
+      <span></span>
+    </div>
     <div ref="contentDetailsRef" class="about-details">
       <BoxDetails @timeline:created="(tl: gsap.core.Timeline) => (tlDetailsRef = tl)" />
     </div>
@@ -76,8 +84,51 @@ watchEffect((onInvalidate) => {
     left: 50%;
     transform: translateX(-50%);
     height: calc(var(--lvh) * 100);
+    overflow: hidden;
 
     --count-height: calc(max(calc((var(--lvh) - var(--svh)) * 100), 36px) + var(--space-outer));
+  }
+
+  &-system-label {
+    position: absolute;
+    top: calc(var(--height-header) + var(--space-sm));
+    left: var(--space-outer);
+    right: var(--space-outer);
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-text-cyan-300);
+    z-index: 3;
+
+    @media (max-width: 639px) {
+      span:first-child {
+        display: none;
+      }
+    }
+  }
+
+  &-axis {
+    position: absolute;
+    inset: var(--height-header) var(--space-outer) var(--space-outer);
+    pointer-events: none;
+
+    span {
+      position: absolute;
+      background: rgba(216, 93, 73, 0.2);
+
+      &:first-child {
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+      }
+
+      &:last-child {
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+      }
+    }
   }
 
   &-details,

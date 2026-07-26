@@ -16,6 +16,18 @@ export default {
       },
     },
     {
+      type: "architecture",
+      props: {
+        title: "A native archive engine behind one desktop workspace",
+        nodes: [
+          { label: "React workspace", detail: "Queue, preview, history, and conflict controls" },
+          { label: "Tauri commands", detail: "Typed bridge between interface and native runtime" },
+          { label: "Rust engine", detail: "Compression, extraction, encryption, and validation" },
+          { label: "OS integration", detail: "Finder, Explorer, Linux launchers, and packaging" },
+        ],
+      },
+    },
+    {
       type: "list",
       props: {
         title: "Product scope",

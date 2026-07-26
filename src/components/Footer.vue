@@ -25,6 +25,10 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
   <footer class="footer">
     <NotchSection class="footer-notch" />
     <div class="footer-content">
+      <div class="footer-rail system-label">
+        <span>BACH.SYSTEM / END OF TRANSMISSION</span>
+        <span>VIETNAM / UTC+7</span>
+      </div>
       <div
         class="footer-back-to-top"
         tabindex="0"
@@ -106,6 +110,7 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
 <style scoped lang="scss">
 .footer {
   background: var(--color-background-300, var(--color-beige-400));
+  border-top: 1px solid rgba(240, 234, 223, 0.16);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -114,20 +119,30 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
   &-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: var(--space-xl);
     width: 100%;
     max-width: calc(var(--breakpoint-xxxl));
-    padding: calc(var(--space-outer) + var(--space-sm)) var(--space-outer);
+    padding: var(--space-lg) var(--space-outer) var(--space-xl);
     position: relative;
+  }
+
+  &-rail {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid rgba(240, 234, 223, 0.12);
+    color: var(--color-text-300);
   }
 
   &-back-to-top {
     cursor: pointer;
+    align-self: center;
 
     @include mixins.mq("md") {
       position: absolute;
-      top: calc(var(--space-outer) + var(--space-sm));
+      top: var(--space-xl);
       left: 50%;
       transform: translateX(-50%);
     }
@@ -173,6 +188,10 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
 
   &-link {
     font-weight: 700;
+    font-family: "ProFontWindows", monospace;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: var(--font-size-xs);
   }
 
   &-credits {
@@ -183,6 +202,10 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
     width: 100%;
     font-size: var(--font-size-sm);
     text-align: center;
+    color: var(--color-text-300);
+    font-family: "ProFontWindows", monospace;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 
     &-built,
     &-music {
@@ -191,15 +214,20 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
       align-items: center;
       gap: var(--space-xxs);
     }
+
+    @include mixins.mq("md") {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+
+      > p {
+        margin-left: auto;
+      }
+    }
   }
 
   &-notch {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateY(-100%);
-    color: var(--color-background-300, var(--color-beige-400));
-    --icon-color: var(--color-background-300, var(--color-beige-400));
+    display: none;
   }
 }
 </style>

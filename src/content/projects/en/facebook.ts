@@ -16,6 +16,18 @@ export default {
       },
     },
     {
+      type: "architecture",
+      props: {
+        title: "One connection carrying events across the product",
+        nodes: [
+          { label: "Next.js client", detail: "Global context, interface state, and notifications" },
+          { label: "SignalR hub", detail: "Presence, messages, groups, and delivery events" },
+          { label: "RabbitMQ", detail: "Durable message-driven processing" },
+          { label: "PostgreSQL", detail: "Users, conversations, roles, and message history" },
+        ],
+      },
+    },
+    {
       type: "list",
       props: {
         title: "Features",

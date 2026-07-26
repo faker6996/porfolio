@@ -4,7 +4,8 @@ import Button from "../../../components/Button.vue";
 import { t } from "../../../i18n/utils/translate";
 import Link from "../../../components/Link.vue";
 import { projectId } from "../../../composables/useRouteObserver";
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
+import SystemVisual from "./SystemVisual.vue";
 
 import type { ProjectContent } from "../../../content/types";
 
@@ -13,6 +14,11 @@ const { content } = defineProps<{
 }>();
 
 const animationKey = ref(0);
+const projectNumber = computed(() => {
+  const order = ["underverse", "md-extension", "ziply", "facebook", "stream-detection"];
+  const index = order.indexOf(projectId.value ?? "");
+  return String(Math.max(0, index) + 1).padStart(2, "0");
+});
 
 // Force animation restart when projectId changes
 watch(projectId, () => {
@@ -21,8 +27,13 @@ watch(projectId, () => {
 </script>
 
 <template>
-  <div class="project-hero grid">
+  <section class="project-hero grid">
+    <div class="project-hero-rail system-label">
+      <span>{{ projectNumber }} / SELECTED SYSTEM</span>
+      <span>TRẦN VĂN BÁCH / VIETNAM</span>
+    </div>
     <div class="project-hero-top">
+      <p class="project-hero-code system-label">BACH / {{ projectId?.replace("-", "_") }}</p>
       <div class="project-hero-title-wrapper">
         <h1 class="project-hero-title" :key="animationKey">
           {{ content.title }}
@@ -51,17 +62,44 @@ watch(projectId, () => {
         }}</Button>
       </Link>
     </div>
-  </div>
+    <div class="project-hero-visual">
+      <SystemVisual :project="projectId ?? ''" />
+    </div>
+    <div class="project-hero-footer system-label">
+      <span>SCROLL TO INSPECT</span>
+      <span>SOURCE / PUBLIC</span>
+    </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
 .project-hero {
   padding: 0 var(--space-outer);
-  padding-bottom: 48px;
+  padding-bottom: clamp(56px, 8vw, 120px);
   padding-top: calc(var(--height-header) + 24px);
+  min-height: calc(var(--dvh) * 100);
+  align-content: start;
+  row-gap: var(--space-xl);
 
   @include mixins.mq("md") {
-    padding-bottom: 64px;
+    padding-top: calc(var(--height-header) + 42px);
+  }
+
+  &-rail {
+    grid-column: 1 / 13;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid rgba(240, 234, 223, 0.16);
+    color: var(--color-text-300);
+
+    span:first-child {
+      color: var(--color-accent-400);
+    }
+  }
+
+  &-code {
+    color: var(--color-accent-400);
   }
 
   &-button {
@@ -73,7 +111,7 @@ watch(projectId, () => {
   }
 
   &-buttons {
-    grid-row: 3;
+    grid-row: auto;
     grid-column: 1 / 13;
     display: flex;
     align-items: center;
@@ -87,7 +125,7 @@ watch(projectId, () => {
       gap: var(--space-md);
       width: fit-content;
       grid-column: 1 / 6;
-      grid-row: 2;
+      grid-row: auto;
       margin-top: 0;
     }
 
@@ -116,14 +154,16 @@ watch(projectId, () => {
   }
 
   &-title {
-    font-size: var(--font-size-title-lg);
+    font-size: clamp(3.5rem, 9vw, 9rem);
     color: var(--color-text-400);
-    line-height: var(--line-height-title);
+    line-height: 0.88;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
     transform: translateY(0%);
     animation: project-hero-title-visible 0.5s var(--ease-smooth);
 
     @include mixins.mq("md") {
-      font-size: var(--font-size-title-xl);
+      max-width: 8ch;
     }
 
     @keyframes project-hero-title-visible {
@@ -147,18 +187,16 @@ watch(projectId, () => {
     align-self: center;
 
     @include mixins.mq("md") {
-      grid-row: 1;
-      grid-column: 6 / 12;
+      grid-column: 8 / 13;
+      margin-top: var(--space-xl);
     }
 
     @include mixins.mq("lg") {
-      grid-row: 1;
-      grid-column: 7 / 12;
+      grid-column: 8 / 13;
     }
 
     @include mixins.mq("xl") {
-      grid-row: 1;
-      grid-column: 7 / 11;
+      grid-column: 8 / 12;
     }
   }
 
@@ -166,17 +204,28 @@ watch(projectId, () => {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
-    grid-row: 1;
     align-self: top;
     grid-column: 1 / 13;
 
     @include mixins.mq("md") {
-      grid-column: 1 / 6;
+      grid-column: 1 / 8;
     }
 
     @include mixins.mq("lg") {
-      grid-column: 2 / 6;
+      grid-column: 1 / 8;
     }
+  }
+
+  &-visual {
+    grid-column: 1 / 13;
+    margin-top: var(--space-lg);
+  }
+
+  &-footer {
+    grid-column: 1 / 13;
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-text-300);
   }
 }
 </style>

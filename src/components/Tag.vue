@@ -20,6 +20,9 @@ const classes = computed(() => ["tag", `tag-variant-${props.variant}`]);
   border-radius: var(--radius-md);
   padding: calc(var(--space-xxs) - var(--stroke-md)) calc(var(--space-sm  ) - var(--stroke-md));
   border: var(--stroke-md) solid transparent;
+  background: rgba(240, 234, 223, 0.04);
+  color: var(--color-text-400);
+  border-color: rgba(240, 234, 223, 0.2);
 
   &-copy {
     font-size: var(--font-size-xs);
@@ -142,5 +145,11 @@ const classes = computed(() => ["tag", `tag-variant-${props.variant}`]);
       color: white;
     }
   }
+}
+
+.tag[class*="tag-variant-"] {
+  background: rgba(173, 63, 49, 0.08);
+  color: var(--color-text-400);
+  border-color: rgba(173, 63, 49, 0.42);
 }
 </style>
