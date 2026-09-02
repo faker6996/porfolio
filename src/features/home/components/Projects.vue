@@ -36,12 +36,12 @@ onMounted(loadPreviews);
         <h2 class="projects-title-copy">Selected<br />systems</h2>
       </div>
       <p class="projects-intro">
-        Five public projects across interface systems, developer tools, native software, real-time communication, and
-        computer vision.
+        Eight systems across enterprise platforms, interface systems, developer tools, native software, real-time
+        communication, and computer vision.
       </p>
       <div class="projects-coordinate system-label">
-        <span>REPOSITORY INDEX</span>
-        <span>GITHUB / FAKER6996</span>
+        <span>PROJECT INDEX</span>
+        <span>SELECTED WORK / 2022–2026</span>
       </div>
     </div>
     <div class="grid projects-list">

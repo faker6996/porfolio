@@ -107,10 +107,11 @@ const handleTimelineCreated = (timeline: gsap.core.Timeline, delay: number) => {
 };
 
 const SERVICES_EN = [
+  { name: "Technical leadership & architecture" },
   { name: "React, Next.js & TypeScript" },
   { name: ".NET, SignalR & RabbitMQ" },
-  { name: "PostgreSQL & Docker" },
-  { name: "Rust, Tauri & desktop apps" },
+  { name: "PostgreSQL, Redis & Docker" },
+  { name: "AI/LLM & coding agents" },
   { name: "WebGL & real-time systems" },
 ] as const satisfies { name: string }[];
 

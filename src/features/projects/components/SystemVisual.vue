@@ -8,6 +8,9 @@ const props = defineProps<{
 
 const label = computed(() => {
   const labels: Record<string, string> = {
+    "iq-nffice": "GROUPWARE PLATFORM / 27 MODULES",
+    "iq-tool": "POINT CLOUD / LIDAR VISUALIZER",
+    "enterprise-groupware-kr": "MULTI-COMPANY PORTAL / KR LOCALIZED",
     underverse: "COMPONENT SYSTEM / 60+ MODULES",
     "md-extension": "MARKDOWN / MULTI-FORMAT PIPELINE",
     ziply: "NATIVE ARCHIVE ENGINE / CROSS-PLATFORM",

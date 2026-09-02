@@ -1,6 +1,15 @@
 import type { Locale } from "../../i18n/types";
 
-export const projectIds = ["underverse", "md-extension", "ziply", "facebook", "stream-detection"];
+export const projectIds = [
+  "iq-nffice",
+  "iq-tool",
+  "enterprise-groupware-kr",
+  "underverse",
+  "md-extension",
+  "ziply",
+  "facebook",
+  "stream-detection",
+];
 
 function simplifyModules(glob: Record<string, any>) {
   const result: Record<string, any> = {};

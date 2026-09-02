@@ -28,7 +28,7 @@ import ArrowRightLong from "../../../components/icons/ArrowRightLong.vue";
           </h1>
         </div>
         <div class="hero-summary">
-          <p>Full-stack engineer building real-time systems, native tools, and interactive 3D experiences.</p>
+          <p>Technical Lead building enterprise platforms, real-time systems, and AI-enabled products.</p>
           <a href="#projects" class="hero-link" data-cursor="arrow" data-sound="click">
             <span>Explore selected systems</span>
             <ArrowRightLong class="hero-link-icon" />

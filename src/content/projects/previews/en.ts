@@ -5,6 +5,24 @@ const githubPreview = (repository: string) =>
 
 export default [
   {
+    title: "IQ NFFICE",
+    slug: "iq-nffice",
+    thumbnail: "",
+    description: "An enterprise groupware platform with 27 business modules",
+  },
+  {
+    title: "IQ Tool",
+    slug: "iq-tool",
+    thumbnail: "",
+    description: "A Three.js point-cloud and LiDAR visualization tool",
+  },
+  {
+    title: "Enterprise Groupware (Korea)",
+    slug: "enterprise-groupware-kr",
+    thumbnail: "",
+    description: "A localized multi-company groupware outsource engagement",
+  },
+  {
     title: "Underverse UI",
     slug: "underverse",
     thumbnail: githubPreview("underverse"),

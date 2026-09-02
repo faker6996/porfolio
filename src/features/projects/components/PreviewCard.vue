@@ -85,7 +85,7 @@ onUnmounted(() => {
   >
     <article class="preview-card-shell preview-card-shell-empty">
       <div class="preview-card-rail system-label">
-        <span>06</span>
+        <span>09</span>
         <span>OPEN CHANNEL</span>
       </div>
       <div class="preview-card-empty-mark">
