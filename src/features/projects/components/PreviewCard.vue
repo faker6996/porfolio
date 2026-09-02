@@ -5,8 +5,6 @@ import gsap from "gsap";
 import { onMounted, onUnmounted, ref } from "vue";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { t } from "../../../i18n/utils/translate";
-import { social } from "../../../content/social";
-import Plus from "../../../components/icons/Plus.vue";
 import SystemVisual from "./SystemVisual.vue";
 
 import type { ProjectPreview } from "../../../content/types";
@@ -15,7 +13,7 @@ const tlRef = ref<gsap.core.Timeline | null>(null);
 const wrapperRef = ref<HTMLDivElement | null>(null);
 
 const props = defineProps<{
-  preview?: ProjectPreview;
+  preview: ProjectPreview;
   index?: number;
 }>();
 
@@ -51,7 +49,6 @@ onUnmounted(() => {
     data-cursor="arrow"
     data-sound="click"
     data-hoversound="hover"
-    v-if="props.preview"
   >
     <article class="preview-card-shell" ref="wrapperRef">
       <div class="preview-card-rail system-label">
@@ -69,36 +66,6 @@ onUnmounted(() => {
         </div>
         <div class="preview-card-action">
           <span class="system-label">{{ t("view-project") }}</span>
-          <ArrowRightLong class="preview-card-action-icon" />
-        </div>
-      </div>
-    </article>
-  </Link>
-
-  <Link
-    v-else
-    class="preview-card children-unclickable"
-    data-cursor="arrow-external"
-    data-hoversound="hover"
-    external
-    :href="social[0].url"
-  >
-    <article class="preview-card-shell preview-card-shell-empty">
-      <div class="preview-card-rail system-label">
-        <span>09</span>
-        <span>OPEN CHANNEL</span>
-      </div>
-      <div class="preview-card-empty-mark">
-        <Plus class="preview-card-empty-mark-icon" />
-      </div>
-      <div class="preview-card-content">
-        <div class="preview-card-copys">
-          <p class="preview-card-code system-label">GITHUB / FAKER6996</p>
-          <h3 class="preview-card-title">{{ t("start-a-new-project") }}</h3>
-          <p class="preview-card-description">Ideas, tools, and experiments continue in public.</p>
-        </div>
-        <div class="preview-card-action">
-          <span class="system-label">OPEN GITHUB</span>
           <ArrowRightLong class="preview-card-action-icon" />
         </div>
       </div>
@@ -137,11 +104,6 @@ onUnmounted(() => {
       align-items: stretch;
       padding: var(--space-md) 0;
       min-height: 520px;
-    }
-
-    &-empty {
-      min-height: 360px;
-      border-bottom: 1px solid rgba(240, 234, 223, 0.18);
     }
   }
 
@@ -217,22 +179,6 @@ onUnmounted(() => {
     &-icon {
       width: 30px;
       transition: transform 340ms var(--ease-smooth);
-    }
-  }
-
-  &-empty-mark {
-    min-height: 260px;
-    display: grid;
-    place-items: center;
-    border: 1px dashed rgba(240, 234, 223, 0.22);
-    background:
-      radial-gradient(circle, rgba(173, 63, 49, 0.14), transparent 45%),
-      rgba(240, 234, 223, 0.02);
-
-    &-icon {
-      width: 54px;
-      color: var(--color-accent-400);
-      --icon-color: var(--color-accent-400);
     }
   }
 

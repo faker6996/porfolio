@@ -1,14 +1,19 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 import { previews } from "../../../content/projects/previews";
 import { locale } from "../../../i18n/store";
 import PreviewCard from "../../projects/components/PreviewCard.vue";
+import PreviewCardCompact from "../../projects/components/PreviewCardCompact.vue";
 import { t } from "../../../i18n/utils/translate";
 import { isFeatureEnabled } from "../../../utils/features";
 
 import type { ProjectPreview } from "../../../content/types";
 
+const FEATURED_COUNT = 4;
+
 const loadedPreviews = ref<ProjectPreview[] | null>(null);
+const featuredPreviews = computed(() => loadedPreviews.value?.slice(0, FEATURED_COUNT) ?? []);
+const moreProjects = computed(() => loadedPreviews.value?.slice(FEATURED_COUNT) ?? []);
 
 const emit = defineEmits<{
   (e: "loaded", previews: ProjectPreview[]): void;
@@ -46,8 +51,22 @@ onMounted(loadPreviews);
     </div>
     <div class="grid projects-list">
       <div class="projects-cards">
-        <PreviewCard v-for="(preview, index) in loadedPreviews" :key="preview.title" :preview="preview" :index="index" />
-        <PreviewCard v-if="isFeatureEnabled('startProject')" />
+        <PreviewCard
+          v-for="(preview, index) in featuredPreviews"
+          :key="preview.title"
+          :preview="preview"
+          :index="index"
+        />
+      </div>
+    </div>
+    <div class="grid projects-more" v-if="moreProjects.length || isFeatureEnabled('startProject')">
+      <div class="projects-more-heading">
+        <p class="projects-more-heading-label system-label">MORE / OPEN SOURCE</p>
+        <h3 class="projects-more-heading-copy">Open source &amp; tools</h3>
+      </div>
+      <div class="projects-more-grid">
+        <PreviewCardCompact v-for="preview in moreProjects" :key="preview.title" :preview="preview" />
+        <PreviewCardCompact v-if="isFeatureEnabled('startProject')" />
       </div>
     </div>
   </section>
@@ -133,6 +152,37 @@ onMounted(loadPreviews);
     display: flex;
     flex-direction: column;
     gap: clamp(64px, 11vw, 180px);
+  }
+
+  &-more {
+    row-gap: var(--space-lg);
+  }
+
+  &-more-heading {
+    grid-column: 1 / 13;
+  }
+
+  &-more-heading-label {
+    margin-bottom: var(--space-xs);
+    color: var(--color-accent-400);
+  }
+
+  &-more-heading-copy {
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    text-transform: uppercase;
+  }
+
+  &-more-grid {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: var(--space-xl);
+
+    @include mixins.mq("md") {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 }
 </style>
