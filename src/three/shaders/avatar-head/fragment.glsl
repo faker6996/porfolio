@@ -17,12 +17,14 @@ void main() {
     // Smooth hair mask: hair is dark (lum < 0.48), skin is bright (lum > 0.64)
     float isHair = 1.0 - smoothstep(0.48, 0.64, lum);
 
-    // Rich Asian black/dark-brown tone preserving ambient shading & highlights
-    vec3 darkHair = vec3(0.065, 0.060, 0.058) + tex.rgb * 0.15;
+    // Rich, natural Asian dark-espresso / black tone preserving texture shading & ambient depth
+    vec3 darkHair = vec3(0.065, 0.058, 0.055) + tex.rgb * 0.16;
 
     vec3 finalColor = mix(tex.rgb, darkHair, isHair);
 
     gl_FragColor = vec4(applyAmbient(finalColor), progress);
 }
+
+
 
 

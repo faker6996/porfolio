@@ -1,5 +1,5 @@
-import { LinearSRGBColorSpace, ShaderMaterial } from "three";
-import { resources } from "../../../utils/resources";
+import { ShaderMaterial, Texture } from "three";
+import { createVietnameseFaceTexture } from "./face-generator";
 import fragmentShader from "../../shaders/avatar-face/fragment.glsl";
 import vertexShader from "../../shaders/avatar-face/vertex.glsl";
 import { avatar } from "./index";
@@ -9,6 +9,7 @@ import type { Material } from "three";
 import { sceneWeights } from "../../../animations/scenes";
 
 let material: Material | null = null;
+let dynamicFaceTexture: Texture | null = null;
 
 const FRAME_INDEXES = {
   "default-0": 0,
@@ -54,9 +55,9 @@ const blink = () => {
 };
 
 const getMaterial = (): Material | null => {
-  const texture = resources.items["face-texture"];
-  texture.colorSpace = LinearSRGBColorSpace;
-  texture.generateMipmaps = false;
+  if (!dynamicFaceTexture) {
+    dynamicFaceTexture = createVietnameseFaceTexture();
+  }
 
   material = new ShaderMaterial({
     transparent: true,
@@ -64,11 +65,12 @@ const getMaterial = (): Material | null => {
     depthWrite: false,
     fragmentShader,
     vertexShader,
-    uniforms: { uTexture: { value: texture }, ...uniforms, ...avatar.uniforms },
+    uniforms: { uTexture: { value: dynamicFaceTexture }, ...uniforms, ...avatar.uniforms },
   });
 
   return material;
 };
+
 
 const canBlink = (): boolean => {
   const isContact = sceneWeights.contact > 0.001;
@@ -125,6 +127,11 @@ const tick = () => {
 
 const destroy = () => {
   gsap.ticker.remove(tick);
+  dynamicFaceTexture?.dispose();
+  dynamicFaceTexture = null;
+  material?.dispose();
+  material = null;
 };
 
 export const face = { init, destroy, getMaterial, FRAME_INDEXES, wakeUp, wave };
+

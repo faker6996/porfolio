@@ -17,6 +17,11 @@ import { aboutProgress } from "../../../animations/transitions/about";
 import type { Material, Bone, Texture } from "three";
 
 
+
+
+
+
+
 let mesh: Mesh | null = null;
 let rightHandBone: Bone | null = null;
 
@@ -125,7 +130,6 @@ const setupMesh = () => {
 
   transform.add(mesh);
 
-
   rightHandBone = mesh.getObjectByName("bone-right-hand") as Bone;
 
   scene.instance.add(transform);
@@ -166,6 +170,11 @@ const destroy = () => {
   face.destroy();
   gsap.ticker.remove(tick);
 };
+
+
+
+
+
 
 
 export const avatar = {
